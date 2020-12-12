@@ -7,19 +7,8 @@ canon::canon(float px, float py, float dis)
     gravedad = 9.81;
     pi = 3.1416;
     distancia = dis;
-    angulo = 0;
 }
 
-canon::canon(float px, float py, float dis, float angle)
-{
-    pos_x = px;
-    pos_y = py;
-
-    gravedad = 9.81;
-    pi = 3.1416;
-    distancia = dis;
-    angulo = angle;
-}
 
 float canon::getPos_x() const
 {

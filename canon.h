@@ -12,11 +12,9 @@ private:
     float gravedad;
     float pi;
     float distancia;
-    float angulo;
 
 public:
     canon(float px, float py, float dis);
-    canon(float px, float py, float dis, float angle);
 
     float getPos_x() const;
     void setPos_x(float value);
@@ -26,8 +24,6 @@ public:
     void setVel_inicial(float value);
     float getDistancia() const;
     void setDistancia(float value);
-    float getAngulo() const;
-    void setAngulo(float value);
 };
 
 #endif // CANON_H
