@@ -15,6 +15,7 @@ private:
     float angulo;
 
 public:
+    canon(float px, float py, float dis);
     canon(float px, float py, float dis, float angle);
 
     float getPos_x() const;
