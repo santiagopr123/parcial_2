@@ -138,11 +138,11 @@ void base_central::disparo_defensivo_3(canon defensivo, canon ofensivo, float ve
 
     float Vxo,Vyo,Vxoo,Vyoo;
     float x,y,x2,y2;
+    float aux,auy;
     int flag = 0;
     bool flag_2 = 0;
-    int V0o = 0,tiempo = 0;
-    int angulo = 0;
-    float aux,auy;
+    int V0o = 0,tiempo = 0,angulo = 0;
+
 
     Vxoo = V0oo*cos((angulo_2)*pi/180);
     Vyoo = (V0oo*sin((angulo_2)*pi/180));
@@ -280,6 +280,7 @@ void base_central::parte_dos(canon defensivo, canon ofensivo, float velocidad_in
     float Vx, Vy,Vx_2,Vy_2;
     float x,y,x_2,y_2;
     float dista;
+    float aux, auy;
     int angulo,Vo,tiempo;
 
 
@@ -292,7 +293,19 @@ void base_central::parte_dos(canon defensivo, canon ofensivo, float velocidad_in
     {
         for(angulo = 0;angulo<90;angulo++)
         {
-
+            Vx = Vo*cos(angulo*pi/180);
+            Vy = Vo*sin(angulo*pi/180);
+            x = 0.0;
+            y = 0.0;
+            x_2 = 0.0;
+            y_2 = 0.0;
+            for(tiempo = 0;;tiempo++)
+            {
+                x = defensivo.getPos_x()+Vx*tiempo;
+                y = defensivo.getPos_y()+Vy*tiempo-(0.5*gravedad*tiempo*tiempo);
+                x_2 = ofensivo.getPos_x()+Vx_2*tiempo+2;
+                y_2 = ofensivo.getPos_y()+Vy_2*(tiempo+2)-(0.5*gravedad*(tiempo+2)*(tiempo+2));
+            }
         }
     }
 
