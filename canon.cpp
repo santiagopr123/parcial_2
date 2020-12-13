@@ -38,3 +38,8 @@ float canon::getDistancia() const
     return distancia;
 }
 
+float canon::getAngulo() const
+{
+    return angulo;
+}
+

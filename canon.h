@@ -1,7 +1,6 @@
 #ifndef CANON_H
 #define CANON_H
 
-
 class canon
 {
 private:

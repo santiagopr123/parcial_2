@@ -45,7 +45,10 @@ int main()
     else if(opcion == 3)
     {
         float angulo = 0,velocidad_inicial_2 = 0;
+
+        //el angulo se le da por parametro al canon ofensivo ojo se le olvida
     }
+
 
 }
 
