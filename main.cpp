@@ -7,6 +7,7 @@ using namespace std;
 void problema_1(canon ofe, canon defe, base_central base, float veli);
 void problema_2(canon ofe, canon defe, base_central base, float veli);
 void problema_4(canon ofe, canon defe, base_central base, float veli);
+void problema_5(canon ofe, canon defe, base_central base, float veli);
 
 
 int main()
@@ -27,7 +28,7 @@ int main()
 
     cout<<"ingrese la velocidad inicial del proyectil--> ";cin>>velocidad_inicial;
     cout<<"\ningrese la altura del canon ofensivo--> ";cin>>posy_1;
-    cout<<"\ningrese la distancia entre los cañones--> ";cin>>posx_2;
+    cout<<"\ningrese la distancia entre los canones--> ";cin>>posx_2;
     cout<<"\ningrese la altura del canon defensivo--> ";cin>>posy_2;
     distancia = posx_2;
 
@@ -52,6 +53,12 @@ int main()
         problema_4(ofensivo,defensivo,centro, velocidad_inicial);
 
     }
+    else if(opcion == 4)
+    {
+        canon ofensivo(posx_1,posy_1,distancia);
+        canon defensivo(posx_2,posy_2,distancia);
+        problema_5(ofensivo,defensivo,centro, velocidad_inicial);
+    }
 
     return 0;
 
@@ -68,8 +75,13 @@ void problema_2(canon ofe, canon defe, base_central base, float veli)
 {
     base.disparo_defensivo(defe,ofe,veli);
 }
+
 void problema_4(canon ofe, canon defe, base_central base, float veli)
 {
     base.disparo_defensivo_3(defe,ofe,veli);
 }
 
+void problema_5(canon ofe, canon defe, base_central base, float veli)
+{
+    base.parte_uno(defe,ofe,veli);
+}
