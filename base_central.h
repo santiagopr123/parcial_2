@@ -22,6 +22,7 @@ public:
 
     void parte_uno(canon defensivo, canon ofensivo, float velocidad_inicial);
     void parte_dos(canon defensivo, canon ofensivo, float velocidad_inicial,int angul);
+    void parte_tres(canon defensivo, canon ofensivo, float velocidad_inicial,int angul);
 
 };
 
