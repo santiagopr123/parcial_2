@@ -18,6 +18,7 @@ public:
     void disparo_ofensivo(canon defensivo, canon ofensivo, float velocidad_inicial);
     void disparo_defensivo(canon defensivo, canon ofensivo, float velocidad_inicial);
     void disparo_ofensivo_defensivo(canon defensivo, canon ofensivo, float velocidad_inicial,float velocidad_inicial_2);
+    void disparo_ofensivo_defensivo_2(canon defensivo, canon ofensivo, float velocidad_inicial,float velocidad_inicial_2);
 
 };
 

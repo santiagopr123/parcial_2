@@ -175,7 +175,10 @@ void base_central::disparo_ofensivo_defensivo(canon defensivo, canon ofensivo, f
                     break;
 
                 }
-
+                if(y<0)
+                {
+                    break;
+                }
             }
             if(flag == 3)
             {
@@ -196,6 +199,11 @@ void base_central::disparo_ofensivo_defensivo(canon defensivo, canon ofensivo, f
     {
         cout<<"no impacto."<<endl;
     }
+
+}
+
+void base_central::disparo_ofensivo_defensivo_2(canon defensivo, canon ofensivo, float velocidad_inicial, float velocidad_inicial_2)
+{
 
 }
 

@@ -6,6 +6,7 @@ using namespace std;
 
 void problema_1(canon ofe, canon defe, base_central base, float veli);
 void problema_2(canon ofe, canon defe, base_central base, float veli);
+void problema_3(canon ofe, canon defe, base_central base, float veli,float veli_2);
 
 int main()
 {
@@ -47,6 +48,14 @@ int main()
         float angulo = 0,velocidad_inicial_2 = 0;
 
         //el angulo se le da por parametro al canon ofensivo ojo se le olvida
+        cout<<"ingrese el angulo para generar el disparo--> ";cin>>angulo;
+        cout<<"\ningrese la velocidad inicial para generar el disparo--> "; cin>>velocidad_inicial_2;
+
+        canon ofensivo(posx_1,posy_1,distancia,angulo);
+        canon defensivo(posx_2,posy_2,distancia);
+        problema_3(ofensivo,defensivo,centro, velocidad_inicial,velocidad_inicial_2);
+
+
     }
 
 
@@ -62,4 +71,8 @@ void problema_1(canon ofe, canon defe, base_central base, float veli)
 void problema_2(canon ofe, canon defe, base_central base, float veli)
 {
     base.disparo_defensivo(defe,ofe,veli);
+}
+void problema_3(canon ofe, canon defe, base_central base, float veli,float veli_2)
+{
+    base.disparo_ofensivo_defensivo(defe,ofe,veli,veli_2);
 }
