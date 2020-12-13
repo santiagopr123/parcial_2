@@ -105,13 +105,15 @@ compiler_clean:
 
 ####### Compile
 
-debug/base_central.o: ../base_central.cpp ../base_central.h
+debug/base_central.o: ../base_central.cpp ../base_central.h \
+		../canon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\base_central.o ..\base_central.cpp
 
 debug/canon.o: ../canon.cpp ../canon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\canon.o ..\canon.cpp
 
-debug/main.o: ../main.cpp 
+debug/main.o: ../main.cpp ../canon.h \
+		../base_central.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\main.cpp
 
 ####### Install
