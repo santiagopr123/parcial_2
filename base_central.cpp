@@ -78,16 +78,19 @@ void base_central::disparo_ofensivo(canon defensivo, canon ofensivo, float veloc
 
 void base_central::disparo_defensivo(canon defensivo, canon ofensivo, float velocidad_inicial)
 {
-    float Vx, Vy, Vo = 0;
-    float x,y;
-    float angulo = 0,dista = 0;
-    int tiempo = 0,flag = 0;
+//    float Vx, Vy, Vo = 0;
+//    float x,y;
+//    float angulo = 0,dista = 0;
+//    int tiempo = 0,flag = 0;
 
-    for(Vo = velocidad_inicial;; Vo+=5)
-    {
-        for(angulo = 0; angulo<90; angulo++)
-        {
-        }
+//    for(Vo = velocidad_inicial;; Vo+=5)
+//    {
+//        for(angulo = 0; angulo<90; angulo++)
+//        {
+//            Vx = Vo*cos((angulo+90)*pi/180);
+//            Vy = (Vo*sin((angulo+90)*pi/180));
+//            x = 0.0;
+//            y = 0.0;
 
 
 }
