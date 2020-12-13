@@ -127,3 +127,165 @@ void base_central::disparo_defensivo(canon defensivo, canon ofensivo, float velo
 
 
 }
+
+void base_central::disparo_defensivo_3(canon defensivo, canon ofensivo, float velocidad_inicial)
+{
+
+    int angulo_2,V0oo;
+    cout<<"ingrese el angulo 2--> ";cin>>angulo_2;
+    cout<<"\ningrese la velocidad inicial 2--> ";cin>>V0oo;
+
+
+    float Vxo,Vyo,Vxoo,Vyoo;
+    float x,y,x2,y2;
+    int flag = 0;
+    bool flag_2 = 0;
+    int V0o = 0,tiempo = 0;
+    int angulo = 0;
+    float aux,auy;
+
+    Vxoo = V0oo*cos((angulo_2)*pi/180);
+    Vyoo = (V0oo*sin((angulo_2)*pi/180));
+
+    for(V0o = velocidad_inicial;; V0o+=5)
+    {
+        for(angulo = 0; angulo<90; angulo++)
+        {
+            Vxo = V0o*cos((angulo+90)*pi/180);
+            Vyo = (V0o*sin((angulo+90)*pi/180));
+            x = 0.0;
+            y = 0.0;
+            x2 = 0.0;
+            y2 = 0.0;
+
+            for(tiempo = 0; ;tiempo++)
+            {
+                x2 = ofensivo.getPos_x()+Vxoo*(tiempo+2);
+                y2 = ofensivo.getPos_y()+Vyoo*(tiempo+2)-(0.5*gravedad*(tiempo+2)*(tiempo+2));
+                x = defensivo.getPos_x()+Vxo*tiempo;
+                y = defensivo.getPos_y()+Vyo*tiempo-(0.5*gravedad*tiempo*tiempo);
+
+                for(int tiempo_2 = tiempo; ; tiempo_2++)
+                {
+                    aux = defensivo.getPos_x()+Vxo*tiempo_2;
+                    auy = defensivo.getPos_y()+Vyo*tiempo_2-(0.5*gravedad*tiempo_2*tiempo_2);
+                    if(sqrt(pow((ofensivo.getPos_x()-aux),2)+pow(ofensivo.getPos_y()-auy,2))<defensivo.getDistancia()*0.025)
+                    {
+                        flag_2 = 1;
+                        break;
+
+                    }
+                    if(auy<0)
+                    {
+                        break;
+                    }
+                }
+                if(flag_2)
+                {
+                    flag_2 = 0;
+                    break;
+                }
+                if(sqrt(pow((defensivo.getPos_x()-x2),2)+pow(defensivo.getPos_y()-y2,2))<ofensivo.getDistancia()*0.05)
+                {
+                    break;
+
+                }
+                if(sqrt(pow((x2-x),2)+pow(y2-y,2))<defensivo.getDistancia()*0.025)
+                {
+                    float dista = sqrt(pow((x2-x),2)+pow(y2-y,2));
+                    cout<<"--------------------------------------"<<endl<<endl;
+                    resultados(tiempo+2,angulo_2,x2,y2,V0oo,dista);
+                    resultados(angulo,V0o,x,y,tiempo,dista);
+                    cout<<endl<<endl;;
+                    flag += 1;
+                    V0o +=50;
+                    break;
+
+                }
+                if(y<0)
+                {
+                    break;
+                }
+            }
+            if(flag == 3)
+            {
+                break;
+            }
+        }
+        if(flag == 3)
+        {
+            break;
+        }
+
+    }
+    if(flag != 3)
+    {
+        cout<<"no impacto en los tres disparos. "<<endl;
+    }
+    else if(flag == 0)
+    {
+        cout<<"no impacto."<<endl;
+    }
+
+}
+
+void base_central::punto_5(canon defensivo, canon ofensivo, float velocidad_inicial)
+{
+    float Vxo,Vyo;
+    float x,y;
+    int flag = 0;
+    bool flag_2 = false;
+    int V0o = 0,tiempo = 0;
+    int angulo = 0;
+
+    for(V0o = velini;; V0o+=5)
+    {
+        for(angulo = 0; angulo<90; angulo++)
+        {
+            Vxo = V0o*cos(angulo*pi/180);
+            Vyo = V0o*sin(angulo*pi/180);
+            x = 0.0;
+            y = 0.0;
+            for(tiempo = 0; ;tiempo++)
+            {
+                x = Vxo*tiempo;
+                y = disparo_of.Yo+Vyo*tiempo-(0.5*G*tiempo*tiempo);
+                if(sqrt(pow((disparo_de.Xd-x),2)+pow(disparo_de.Yd-y,2))<disparo_of.d0 && flag_2 == false)
+                {
+                    imprimir_resultadps(angulo,V0o,x,y,tiempo);
+                    flag += 1;
+                    flag_2 = true;
+                    V0o +=50;
+                    break;
+
+                }
+                if(y<0)
+                {
+                    break;
+                }
+                if(flag_2)
+                {
+                    for()
+                }
+            }
+            if(flag == 3)
+            {
+                break;
+            }
+        }
+        if(flag == 3)
+        {
+            break;
+        }
+
+    }
+    if(flag != 3)
+    {
+        cout<<"no impacto en los tres disparos. "<<endl;
+    }
+    else if(flag == 0)
+    {
+        cout<<"no impacto."<<endl;
+    }
+
+}

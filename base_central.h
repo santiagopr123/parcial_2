@@ -18,7 +18,9 @@ public:
     void disparo_ofensivo(canon defensivo, canon ofensivo, float velocidad_inicial);
     void disparo_defensivo(canon defensivo, canon ofensivo, float velocidad_inicial);
 
+    void disparo_defensivo_3(canon defensivo, canon ofensivo, float velocidad_inicial);
 
+    void punto_5(canon defensivo, canon ofensivo, float velocidad_inicial);
 
 };
 
