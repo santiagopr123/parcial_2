@@ -229,33 +229,34 @@ void base_central::disparo_defensivo_3(canon defensivo, canon ofensivo, float ve
 
 }
 
-void base_central::punto_5(canon defensivo, canon ofensivo, float velocidad_inicial)
+void base_central::parte_uno(canon defensivo, canon ofensivo, float velocidad_inicial)
 {
-    float Vxo,Vyo;
-    float x,y;
-    int flag = 0;
-    bool flag_2 = false;
-    int V0o = 0,tiempo = 0;
-    int angulo = 0;
 
-    for(V0o = velini;; V0o+=5)
+    //int angulo_2,Voo;
+    //cout<<"ingrese el angulo 2--> ";cin>>angulo_2;
+    //cout<<"\ningrese la velocidad inicial 2--> ";cin>>Voo;
+
+    float Vx, Vy;
+    float x,y;
+    float dista;
+    int angulo,Vo,tiempo;
+
+    for(Vo = velocidad_inicial;;Vo+=5)
     {
-        for(angulo = 0; angulo<90; angulo++)
+        for(angulo = 0;angulo<90;angulo++)
         {
-            Vxo = V0o*cos(angulo*pi/180);
-            Vyo = V0o*sin(angulo*pi/180);
+            Vx = Vo*cos(angulo*pi/180);
+            Vy = Vo*sin(angulo*pi/180);
             x = 0.0;
             y = 0.0;
-            for(tiempo = 0; ;tiempo++)
+            for(tiempo = 0;;tiempo++)
             {
-                x = Vxo*tiempo;
-                y = disparo_of.Yo+Vyo*tiempo-(0.5*G*tiempo*tiempo);
-                if(sqrt(pow((disparo_de.Xd-x),2)+pow(disparo_de.Yd-y,2))<disparo_of.d0 && flag_2 == false)
+                x = ofensivo.getPos_x()+ Vx*tiempo;
+                y = ofensivo.getPos_y()+Vy*tiempo-(0.5*gravedad*tiempo*tiempo);
+                dista = sqrt(pow((defensivo.getPos_x()-x),2)+pow(defensivo.getPos_y()-y,2));
+                if(sqrt(pow((defensivo.getPos_x()-x),2)+pow(defensivo.getPos_y()-y,2))<ofensivo.getDistancia()*0.05)
                 {
-                    imprimir_resultadps(angulo,V0o,x,y,tiempo);
-                    flag += 1;
-                    flag_2 = true;
-                    V0o +=50;
+                    resultados(tiempo,angulo,x,y,Vo,dista);
                     break;
 
                 }
@@ -263,29 +264,36 @@ void base_central::punto_5(canon defensivo, canon ofensivo, float velocidad_inic
                 {
                     break;
                 }
-                if(flag_2)
-                {
-                    for()
-                }
             }
-            if(flag == 3)
+            if(y<0)
             {
                 break;
             }
         }
-        if(flag == 3)
-        {
-            break;
-        }
+    }
 
-    }
-    if(flag != 3)
+}
+
+void base_central::parte_dos(canon defensivo, canon ofensivo, float velocidad_inicial, int angul, int time)
+{
+
+    float Vx, Vy,Vx_2,Vy_2;
+    float x,y,x_2,y_2;
+    float dista;
+    int angulo,Vo,tiempo;
+
+
+    Vx_2 = velocidad_inicial*cos(angul*pi/180);
+    Vy_2 = velocidad_inicial*sin(angul*pi/180);
+
+
+
+    for(Vo = 50;;Vo+=5)
     {
-        cout<<"no impacto en los tres disparos. "<<endl;
-    }
-    else if(flag == 0)
-    {
-        cout<<"no impacto."<<endl;
+        for(angulo = 0;angulo<90;angulo++)
+        {
+
+        }
     }
 
 }
