@@ -13,7 +13,7 @@ void problema_5(canon ofe, canon defe, base_central base, float veli);
 
 int main()
 {
-    int opcion = 0;
+    int opcion = 0,opcion_2 = 0;
 
     float distancia;
     float velocidad_inicial;
@@ -29,43 +29,64 @@ int main()
     cout<<"ingrese el numero '5' para el nuevo punto< contrarrstar la bala defensiva para ser efectivo el dispao ofensivo."<<endl;
     cin>>opcion;
 
+    while (opcion_2 == 0)
+    {
 
-    cout<<"ingrese la velocidad inicial del proyectil--> ";cin>>velocidad_inicial;
-    cout<<"\ningrese la altura del canon ofensivo--> ";cin>>posy_1;
-    cout<<"\ningrese la distancia entre los canones--> ";cin>>posx_2;
-    cout<<"\ningrese la altura del canon defensivo--> ";cin>>posy_2;
-    distancia = posx_2;
-    if(opcion == 1)
-    {
-        canon ofensivo(posx_1,posy_1,distancia);
-        canon defensivo(posx_2,posy_2,distancia);
-        problema_1(ofensivo,defensivo,centro, velocidad_inicial);
-    }
-    else if(opcion == 2)
-    {
-        canon ofensivo(posx_1,posy_1,distancia);
-        canon defensivo(posx_2,posy_2,distancia);
-        problema_2(ofensivo,defensivo,centro, velocidad_inicial);
-    }
-    else if(opcion == 3)
-    {
-        canon ofensivo(posx_1,posy_1,distancia);
-        canon defensivo(posx_2,posy_2,distancia);
-        problema_3(ofensivo,defensivo,centro, velocidad_inicial);
+        cout<<"ingrese la velocidad inicial del proyectil--> ";cin>>velocidad_inicial;
+        cout<<"\ningrese la altura del canon ofensivo--> ";cin>>posy_1;
+        cout<<"\ningrese la distancia entre los canones--> ";cin>>posx_2;
+        cout<<"\ningrese la altura del canon defensivo--> ";cin>>posy_2;
+        distancia = posx_2;
 
+        if(opcion == 1)
+        {
+            canon ofensivo(posx_1,posy_1,distancia);
+            canon defensivo(posx_2,posy_2,distancia);
+            problema_1(ofensivo,defensivo,centro, velocidad_inicial);
+        }
+        else if(opcion == 2)
+        {
+            canon ofensivo(posx_1,posy_1,distancia);
+            canon defensivo(posx_2,posy_2,distancia);
+            problema_2(ofensivo,defensivo,centro, velocidad_inicial);
+        }
+        else if(opcion == 3)
+        {
+            canon ofensivo(posx_1,posy_1,distancia);
+            canon defensivo(posx_2,posy_2,distancia);
+            problema_3(ofensivo,defensivo,centro, velocidad_inicial);
+
+        }
+        else if(opcion == 4)
+        {
+            canon ofensivo(posx_1,posy_1,distancia);
+            canon defensivo(posx_2,posy_2,distancia);
+            problema_4(ofensivo,defensivo,centro, velocidad_inicial);
+        }
+        else if(opcion == 5)
+        {
+            canon ofensivo(posx_1,posy_1,distancia);
+            canon defensivo(posx_2,posy_2,distancia);
+            problema_5(ofensivo,defensivo,centro, velocidad_inicial);
+        }
+
+        cout<<"desea salir del programa--> en caso de que sea no ingrese el numero '0'--> "<<endl;cin>>opcion_2;
+        if(opcion_2 == 0)
+        {
+            cout<<"este es el programa para el cual esta diseñado el parcial--> "<<endl<<"escoja la opcion de su preferencia: "<<endl;
+            cout<<"ingrese el numero '1' para generar un disparo ofensivo que comprometa al canon defensivo--> "<<endl;
+            cout<<"ingrese el numero '2' para generar un disparo defensivo que comprometa al canon ofensivo--> "<<endl;
+            cout<<"ingrese el numero '3' para Dado un disparo ofensivo, generar (al menos tres) disparos defensivos que impida que el canón defensivo sea destruido sin importar si el canon ofensivo pueda ser destruido."<<endl;
+            cout<<"ingresa el numero '4' para Dado un disparo ofensivo, generar (al menos tres) disparo defensivos que impidan que los canones defensivo y ofensivo puedan ser destruidos."<<endl;
+            cout<<"ingrese el numero '5' para el nuevo punto< contrarrstar la bala defensiva para ser efectivo el dispao ofensivo."<<endl;
+            cin>>opcion;
+        }
+        else
+        {
+            cout<<"muchas gracias!"<<endl;
+        }
     }
-    else if(opcion == 4)
-    {
-        canon ofensivo(posx_1,posy_1,distancia);
-        canon defensivo(posx_2,posy_2,distancia);
-        problema_4(ofensivo,defensivo,centro, velocidad_inicial);
-    }
-    else if(opcion == 5)
-    {
-        canon ofensivo(posx_1,posy_1,distancia);
-        canon defensivo(posx_2,posy_2,distancia);
-        problema_5(ofensivo,defensivo,centro, velocidad_inicial);
-    }
+
 
     return 0;
 }

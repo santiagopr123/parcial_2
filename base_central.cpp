@@ -224,7 +224,6 @@ void base_central::disparo_defensivo_4(canon defensivo, canon ofensivo, float ve
                     resultados(angulo,V0o,x,y,tiempo,dista);
                     cout<<endl<<endl;;
                     flag += 1;
-                    V0o +=50;
                     break;
 
                 }
