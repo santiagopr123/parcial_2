@@ -308,6 +308,7 @@ void base_central::parte_dos(canon defensivo, canon ofensivo, float velocidad_in
     int V0o = 0,tiempo = 0;
     int angulo = 0,velini = 0;
 
+
     Vxoo = velocidad_inicial*cos((angul)*pi/180);
     Vyoo = (velocidad_inicial*sin((angul)*pi/180));
 
@@ -352,6 +353,11 @@ void base_central::parte_dos(canon defensivo, canon ofensivo, float velocidad_in
             {
                 break;
             }
+            if(x<0)
+            {
+                cout<<"se paso 1"<<endl;
+                break;
+            }
         }
         if(x<0)
         {
@@ -362,7 +368,6 @@ void base_central::parte_dos(canon defensivo, canon ofensivo, float velocidad_in
         {
             break;
         }
-
     }
     if(flag != 1)
     {
@@ -408,8 +413,6 @@ void base_central::parte_tres(canon defensivo, canon ofensivo, float velocidad_i
                 if(sqrt(pow((x2-x),2)+pow(y2-y,2))<ofensivo.getDistancia()*0.005)
                 {
                     cout<<"--------------------------------------"<<endl<<endl;
-                    //imprimir_resultadps(angulo_2,V0oo,x2,y2,tiempo+2);
-                    //imprimir_resultadps(angulo,V0o,x,y,tiempo);
                     resultados(tiempo,angulo,x,y,V0o,sqrt(pow((x2-x),2)+pow(y2-y,2)));
                     cout<<endl<<endl;
                     flag += 1;
@@ -422,12 +425,12 @@ void base_central::parte_tres(canon defensivo, canon ofensivo, float velocidad_i
                     break;
                 }
             }
-            if(flag == 4)
+            if(flag == 3)
             {
                 break;
             }
         }
-        if(flag == 4)
+        if(flag == 3)
         {
             break;
         }
