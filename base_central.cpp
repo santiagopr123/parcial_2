@@ -9,13 +9,13 @@ base_central::base_central()
 
 void base_central::resultados(int t, float a, float px, float py, float v, float d)
 {
-    cout<<"**********************************************"<<endl;
     cout<<"impacto en un timepo de--> "<<t<<endl;
     cout<<"impacto en un angulo de--> "<<a<<endl;
     cout<<"impacto en la posicion x--> "<<px<<endl;
     cout<<"impacto en la posicion y--> "<<py<<endl;
     cout<<"la distancia es de--> "<<d<<endl;
     cout<<"la velocidad fue de-->"<<v<<endl;
+    cout<<"-----------------------------------------"<<endl;
 }
 
 void base_central::disparo_ofensivo(canon defensivo, canon ofensivo, float velocidad_inicial)
@@ -269,7 +269,7 @@ void base_central::disparo_defensivo_3(canon defensivo, canon ofensivo, float ve
 
 void base_central::disparo_defensivo_4(canon defensivo, canon ofensivo, float velocidad_inicial)
 {
-    int V0oo, angulo_2;
+    int V0oo = 0, angulo_2 = 30;
 
     cout<<"ingrese el angulo 2--> ";cin>>angulo_2;
     cout<<"\ningrese la velocidad inicial 2--> ";cin>>V0oo;
@@ -302,12 +302,12 @@ void base_central::disparo_defensivo_4(canon defensivo, canon ofensivo, float ve
                 y2 = ofensivo.getPos_y()+Vyoo*(tiempo+2)-(0.5*gravedad*(tiempo+2)*(tiempo+2));
                 x = defensivo.getPos_x()+Vxo*tiempo;
                 y = defensivo.getPos_y()+Vyo*tiempo-(0.5*gravedad*tiempo*tiempo);
-                if(sqrt(pow((x2-x),2)+pow(y2-y,2))<defensivo.getDistancia()*0.025)
+                if(sqrt(pow((x2-x),2)+pow(y2-y,2))<defensivo.getDistancia()*0.08)
                 {
-                    cout<<"--------------------------------------"<<endl<<endl;
-                    //imprimir_resultadps(angulo_2,V0oo,x2,y2,tiempo+2);
-                    //imprimir_resultadps(angulo,V0o,x,y,tiempo);
-                    cout<<endl<<endl;;
+                    cout<<"-----------------------------------------"<<endl<<endl;
+                    resultados(tiempo,angulo,x,y,V0o,sqrt(pow((x2-x),2)+pow(y2-y,2)));
+                    resultados(tiempo+2,angulo_2,x2,y2,V0oo,sqrt(pow((x2-x),2)+pow(y2-y,2)));
+                    cout<<"-----------------------------------------"<<endl<<endl;
                     flag += 1;
                     break;
 
@@ -316,8 +316,16 @@ void base_central::disparo_defensivo_4(canon defensivo, canon ofensivo, float ve
                 {
                     break;
                 }
+                if(x<0  ||  x2 > defensivo.getDistancia()+30)
+                {
+                    break;
+                }
             }
             if(flag == 3)
+            {
+                break;
+            }
+            if(x<0  ||  x2 > defensivo.getDistancia()+30)
             {
                 break;
             }
@@ -326,18 +334,22 @@ void base_central::disparo_defensivo_4(canon defensivo, canon ofensivo, float ve
         {
             break;
         }
+        if(x<0  ||  x2 > defensivo.getDistancia()+30)
+        {
+            break;
+        }
 
     }
-    if(flag != 3)
-    {
-        cout<<"no impacto en los tres disparos. "<<endl;
-    }
-    else if(flag == 0)
+    if(flag == 0)
     {
         cout<<"no impacto."<<endl;
     }
-}
+    if(flag != 3 && flag != 0)
+    {
+        cout<<"no impacto en los tres disparos. "<<endl;
+    }
 
+}
 void base_central::parte_uno(canon defensivo, canon ofensivo, float velocidad_inicial)
 {
     float Vx, Vy;
