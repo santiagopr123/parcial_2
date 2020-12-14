@@ -83,12 +83,12 @@ void problema_2(canon ofe, canon defe, base_central base, float veli)
 
 void problema_3(canon ofe, canon defe, base_central base, float veli)
 {
-    base.disparo_defensivo_4(defe,ofe,veli);
+    base.disparo_defensivo_3(defe,ofe,veli);
 }
 
 void problema_4(canon ofe, canon defe, base_central base, float veli)
 {
-    base.disparo_defensivo_3(defe,ofe,veli);
+    base.disparo_defensivo_4(defe,ofe,veli);
 }
 
 void problema_5(canon ofe, canon defe, base_central base, float veli)

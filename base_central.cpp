@@ -150,7 +150,7 @@ void base_central::disparo_defensivo(canon defensivo, canon ofensivo, float velo
 
 }
 
-void base_central::disparo_defensivo_3(canon defensivo, canon ofensivo, float velocidad_inicial)
+void base_central::disparo_defensivo_4(canon defensivo, canon ofensivo, float velocidad_inicial)
 {
 
     int angulo_2,V0oo;
@@ -191,7 +191,7 @@ void base_central::disparo_defensivo_3(canon defensivo, canon ofensivo, float ve
                 {
                     aux = defensivo.getPos_x()+Vxo*tiempo_2;
                     auy = defensivo.getPos_y()+Vyo*tiempo_2-(0.5*gravedad*tiempo_2*tiempo_2);
-                    if(sqrt(pow((ofensivo.getPos_x()-aux),2)+pow(ofensivo.getPos_y()-auy,2))<defensivo.getDistancia()*0.025)
+                    if(sqrt(pow((ofensivo.getPos_x()-aux),2)+pow(ofensivo.getPos_y()-auy,2))<defensivo.getDistancia()*0.25)
                     {
                         flag_2 = 1;
                         break;
@@ -201,10 +201,10 @@ void base_central::disparo_defensivo_3(canon defensivo, canon ofensivo, float ve
                     {
                         break;
                     }
-//                    if(aux<0 || aux>ofensivo.getDistancia()+20)
-//                    {
-//                        break;
-//                    }
+                    if(aux<0 || aux>ofensivo.getDistancia()+20)
+                    {
+                        break;
+                    }
                 }
                 if(flag_2)
                 {
@@ -232,28 +232,28 @@ void base_central::disparo_defensivo_3(canon defensivo, canon ofensivo, float ve
                 {
                     break;
                 }
-//                if(x<0 || x>ofensivo.getDistancia()+20)
-//                {
-//                    break;
-//                }
+                if(x<0 || x>ofensivo.getDistancia()+20)
+                {
+                    break;
+                }
             }
             if(flag == 3)
             {
                 break;
             }
-//            if(x<0 || x>ofensivo.getDistancia()+20)
-//            {
-//                break;
-//            }
+            if(x<0 || x>ofensivo.getDistancia()+20)
+            {
+                break;
+            }
         }
         if(flag == 3)
         {
             break;
         }
-//        if(x<0 || x>ofensivo.getDistancia()+20)
-//        {
-//            break;
-//        }
+        if(x<0 || x>ofensivo.getDistancia()+20)
+        {
+            break;
+        }
 
     }
     if(flag != 3)
@@ -267,7 +267,7 @@ void base_central::disparo_defensivo_3(canon defensivo, canon ofensivo, float ve
 
 }
 
-void base_central::disparo_defensivo_4(canon defensivo, canon ofensivo, float velocidad_inicial)
+void base_central::disparo_defensivo_3(canon defensivo, canon ofensivo, float velocidad_inicial)
 {
     int V0oo = 0, angulo_2 = 30;
 
@@ -302,11 +302,11 @@ void base_central::disparo_defensivo_4(canon defensivo, canon ofensivo, float ve
                 y2 = ofensivo.getPos_y()+Vyoo*(tiempo+2)-(0.5*gravedad*(tiempo+2)*(tiempo+2));
                 x = defensivo.getPos_x()+Vxo*tiempo;
                 y = defensivo.getPos_y()+Vyo*tiempo-(0.5*gravedad*tiempo*tiempo);
-                if(sqrt(pow((x2-x),2)+pow(y2-y,2))<defensivo.getDistancia()*0.08)
+                if(sqrt(pow((x2-x),2)+pow(y2-y,2))<defensivo.getDistancia()*0.02)
                 {
                     cout<<"-----------------------------------------"<<endl<<endl;
-                    resultados(tiempo,angulo,x,y,V0o,sqrt(pow((x2-x),2)+pow(y2-y,2)));
-                    resultados(tiempo+2,angulo_2,x2,y2,V0oo,sqrt(pow((x2-x),2)+pow(y2-y,2)));
+                    resultados(tiempo,angulo,x,-y,V0o,sqrt(pow((x2-x),2)+pow(y2-y,2)));
+                    resultados(tiempo+2,angulo_2,x2,-y2,V0oo,sqrt(pow((x2-x),2)+pow(y2-y,2)));
                     cout<<"-----------------------------------------"<<endl<<endl;
                     flag += 1;
                     break;
@@ -350,6 +350,7 @@ void base_central::disparo_defensivo_4(canon defensivo, canon ofensivo, float ve
     }
 
 }
+
 void base_central::parte_uno(canon defensivo, canon ofensivo, float velocidad_inicial)
 {
     float Vx, Vy;
