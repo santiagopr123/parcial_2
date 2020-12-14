@@ -261,8 +261,16 @@ void base_central::parte_uno(canon defensivo, canon ofensivo, float velocidad_in
                 {
                     break;
                 }
+                if(x<0 || x>ofensivo.getDistancia()+50)
+                {
+                    break;
+                }
             }
             if(y<0)
+            {
+                break;
+            }
+            if(x<0 || x>ofensivo.getDistancia()+50)
             {
                 break;
             }
@@ -275,6 +283,18 @@ void base_central::parte_uno(canon defensivo, canon ofensivo, float velocidad_in
         {
             break;
         }
+        if( x>ofensivo.getDistancia()+50)
+        {
+            break;
+        }
+        if(x<0 )
+        {
+            break;
+        }
+    }
+    if(flag == 0)
+    {
+        cout<<"no se ha podido acceder a un disparo con los valores dados ya que en los calculos se sobre pasa los limites de la bala."<<endl;
     }
 
 }
@@ -322,11 +342,21 @@ void base_central::parte_dos(canon defensivo, canon ofensivo, float velocidad_in
                 {
                     break;
                 }
+                if(x<0)
+                {
+                    cout<<"se paso 1"<<endl;
+                    break;
+                }
             }
             if(flag == 1)
             {
                 break;
             }
+        }
+        if(x<0)
+        {
+            cout<<"se paso 2"<<endl;
+            break;
         }
         if(flag == 1)
         {
@@ -380,6 +410,7 @@ void base_central::parte_tres(canon defensivo, canon ofensivo, float velocidad_i
                     cout<<"--------------------------------------"<<endl<<endl;
                     //imprimir_resultadps(angulo_2,V0oo,x2,y2,tiempo+2);
                     //imprimir_resultadps(angulo,V0o,x,y,tiempo);
+                    resultados(tiempo,angulo,x,y,V0o,sqrt(pow((x2-x),2)+pow(y2-y,2)));
                     cout<<endl<<endl;
                     flag += 1;
                     V0o +=50;
@@ -391,12 +422,16 @@ void base_central::parte_tres(canon defensivo, canon ofensivo, float velocidad_i
                     break;
                 }
             }
-            if(flag == 3)
+            if(flag == 4)
             {
                 break;
             }
         }
-        if(flag == 3)
+        if(flag == 4)
+        {
+            break;
+        }
+        if(x<0 || x>ofensivo.getDistancia()+50)
         {
             break;
         }
@@ -404,11 +439,11 @@ void base_central::parte_tres(canon defensivo, canon ofensivo, float velocidad_i
     }
     if(flag != 3)
     {
-        cout<<"no impacto en los tres disparos. "<<endl;
+        cout<<"no impacto en los tres disparos, aunque dio algunos ha sobrepasado los limites."<<endl;
     }
     else if(flag == 0)
     {
-        cout<<"no impacto."<<endl;
+        cout<<"no impacto ninguno, debido al rango tan angosto de destruccion no pudo ser detectado."<<endl;
     }
 
 
