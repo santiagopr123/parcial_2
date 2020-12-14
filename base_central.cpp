@@ -42,11 +42,14 @@ void base_central::disparo_ofensivo(canon defensivo, canon ofensivo, float veloc
                 {
                     resultados(tiempo,angulo,x,y,Vo,dista);
                     flag += 1;
-                    //Vo +=50;
                     break;
 
                 }
                 if(y<0)
+                {
+                    break;
+                }
+                if(x>ofensivo.getDistancia()+30)
                 {
                     break;
                 }
@@ -55,8 +58,16 @@ void base_central::disparo_ofensivo(canon defensivo, canon ofensivo, float veloc
             {
                 break;
             }
+            if(x>ofensivo.getDistancia()+30)
+            {
+                break;
+            }
         }
         if(flag == 3)
+        {
+            break;
+        }
+        if(x>ofensivo.getDistancia()+30)
         {
             break;
         }
@@ -96,11 +107,14 @@ void base_central::disparo_defensivo(canon defensivo, canon ofensivo, float velo
                 {
                     resultados(tiempo,angulo,x,y,Vo,dista);
                     flag += 1;
-                    //Vo +=20;
                     break;
 
                 }
                 if(y<0)
+                {
+                    break;
+                }
+                if(x<0)
                 {
                     break;
                 }
@@ -109,8 +123,16 @@ void base_central::disparo_defensivo(canon defensivo, canon ofensivo, float velo
             {
                 break;
             }
+            if(x<0)
+            {
+                break;
+            }
         }
         if(flag == 3)
+        {
+            break;
+        }
+        if(x<0)
         {
             break;
         }
@@ -179,6 +201,10 @@ void base_central::disparo_defensivo_3(canon defensivo, canon ofensivo, float ve
                     {
                         break;
                     }
+//                    if(aux<0 || aux>ofensivo.getDistancia()+20)
+//                    {
+//                        break;
+//                    }
                 }
                 if(flag_2)
                 {
@@ -206,6 +232,90 @@ void base_central::disparo_defensivo_3(canon defensivo, canon ofensivo, float ve
                 {
                     break;
                 }
+//                if(x<0 || x>ofensivo.getDistancia()+20)
+//                {
+//                    break;
+//                }
+            }
+            if(flag == 3)
+            {
+                break;
+            }
+//            if(x<0 || x>ofensivo.getDistancia()+20)
+//            {
+//                break;
+//            }
+        }
+        if(flag == 3)
+        {
+            break;
+        }
+//        if(x<0 || x>ofensivo.getDistancia()+20)
+//        {
+//            break;
+//        }
+
+    }
+    if(flag != 3)
+    {
+        cout<<"no impacto en los tres disparos. "<<endl;
+    }
+    else if(flag == 0)
+    {
+        cout<<"no impacto."<<endl;
+    }
+
+}
+
+void base_central::disparo_defensivo_4(canon defensivo, canon ofensivo, float velocidad_inicial)
+{
+    int V0oo, angulo_2;
+
+    cout<<"ingrese el angulo 2--> ";cin>>angulo_2;
+    cout<<"\ningrese la velocidad inicial 2--> ";cin>>V0oo;
+
+    float Vxo,Vyo,Vxoo,Vyoo;
+    float x,y,x2,y2;
+    int flag = 0;
+    int V0o = 0,tiempo = 0;
+    int angulo = 0;
+
+
+
+    Vxoo = V0oo*cos((angulo_2)*pi/180);
+    Vyoo = (V0oo*sin((angulo_2)*pi/180));
+
+    for(V0o = velocidad_inicial;; V0o+=1)
+    {
+        for(angulo = 0; angulo<90; angulo++)
+        {
+            Vxo = V0o*cos((angulo+90)*pi/180);
+            Vyo = (V0o*sin((angulo+90)*pi/180));
+            x = 0.0;
+            y = 0.0;
+            x2 = 0.0;
+            y2 = 0.0;
+
+            for(tiempo = 0; ;tiempo++)
+            {
+                x2 = ofensivo.getPos_x()+Vxoo*(tiempo+2);
+                y2 = ofensivo.getPos_y()+Vyoo*(tiempo+2)-(0.5*gravedad*(tiempo+2)*(tiempo+2));
+                x = defensivo.getPos_x()+Vxo*tiempo;
+                y = defensivo.getPos_y()+Vyo*tiempo-(0.5*gravedad*tiempo*tiempo);
+                if(sqrt(pow((x2-x),2)+pow(y2-y,2))<defensivo.getDistancia()*0.025)
+                {
+                    cout<<"--------------------------------------"<<endl<<endl;
+                    //imprimir_resultadps(angulo_2,V0oo,x2,y2,tiempo+2);
+                    //imprimir_resultadps(angulo,V0o,x,y,tiempo);
+                    cout<<endl<<endl;;
+                    flag += 1;
+                    break;
+
+                }
+                if(y<0)
+                {
+                    break;
+                }
             }
             if(flag == 3)
             {
@@ -226,7 +336,6 @@ void base_central::disparo_defensivo_3(canon defensivo, canon ofensivo, float ve
     {
         cout<<"no impacto."<<endl;
     }
-
 }
 
 void base_central::parte_uno(canon defensivo, canon ofensivo, float velocidad_inicial)

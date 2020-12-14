@@ -19,6 +19,7 @@ public:
     void disparo_defensivo(canon defensivo, canon ofensivo, float velocidad_inicial);
 
     void disparo_defensivo_3(canon defensivo, canon ofensivo, float velocidad_inicial);
+    void disparo_defensivo_4(canon defensivo, canon ofensivo, float velocidad_inicial);
 
     void parte_uno(canon defensivo, canon ofensivo, float velocidad_inicial);
     void parte_dos(canon defensivo, canon ofensivo, float velocidad_inicial,int angul);
